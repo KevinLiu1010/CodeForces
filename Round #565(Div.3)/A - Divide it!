@@ -1,0 +1,51 @@
+
+using namespace std;
+#include <iostream>
+#include<math.h>
+typedef long long ll;
+#define FOR(i, a, b) for (int i=a; i<b; i++)
+#define F0R(i, a) for (int i=0; i<a; i++)
+
+int v_p(int p, ll num) {
+	int out = 0;
+	while (num%p==0) {
+		num /= p;
+		out ++;
+	}
+	return out;
+}
+ll prods(int twov,int threev, int fivev) {
+	ll out = 1;
+	F0R(i,twov){
+		out *= 2;
+	}
+	F0R(i, threev) {
+		out *= 3;
+	}
+	F0R(i,fivev) {
+		out *= 5;
+	}
+	return out;
+}
+int main()
+{
+	int q,two,three,five;
+	ll temp;
+	cin >> q;
+	F0R(i, q) {
+		cin >> temp;
+		two = v_p(2, temp);
+		three = v_p(3, temp);
+		five = v_p(5, temp);
+		
+		
+		if (temp!= prods(two, three, five)) {
+			cout << "-1\n";
+		}
+		else {
+			cout << (two + three * 2 + five * 3) << "\n";
+		}
+	}
+
+}
+
